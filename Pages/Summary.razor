@@ -1,0 +1,61 @@
+@* Testing page *@
+@page "/showrecordings"
+@using MyProject.Helpers
+@using Microsoft.Identity.Web
+@using Microsoft.Graph
+@inject Microsoft.Graph.GraphServiceClient GraphServiceClient
+@inject MicrosoftIdentityConsentAndConditionalAccessHandler ConsentHandler
+
+<h1>Me</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (user == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{  
+    <table class="table table-striped table-condensed" style="font-family: monospace">
+        <tr>
+            <th>Property</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Recordings</td>
+            <td>@user.DisplayName</td>
+        </tr>
+    </table>
+    <button class="btn btn-default" @onclick="() => SendEmail()"> Send Email</button>
+}
+
+
+@code {
+    User? user;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            user = await GraphServiceClient.Me.Request().GetAsync();
+        }
+        catch (Exception ex)
+        {
+            ConsentHandler.HandleException(ex);
+        }
+    }
+}
+
+@code {
+    private async Task SendEmail()
+    {
+        var graphServiceClient = GraphServiceClientProvider.GetAuthenticatedClient();
+        var user = await graphServiceClient.Me.Request().GetAsync();
+        var email = user.Mail;
+
+        var emailBody = "test body";
+
+        await GraphServiceHelper.SendEmail(graphServiceClient, email, "hello", emailBody);
+    }
+}
+

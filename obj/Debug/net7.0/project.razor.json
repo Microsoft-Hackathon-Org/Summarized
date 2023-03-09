@@ -13,43 +13,6 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 885809911,
-        "Kind": "Components.Component",
-        "Name": "BlazorSample.Pages.Counter",
-        "AssemblyName": "BlazorSample",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorSample.Pages.Counter",
-          "Common.TypeNamespace": "BlazorSample.Pages",
-          "Common.TypeNameIdentifier": "Counter"
-        }
-      },
-      {
-        "HashCode": 1036842398,
-        "Kind": "Components.Component",
-        "Name": "BlazorSample.Pages.Counter",
-        "AssemblyName": "BlazorSample",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BlazorSample.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorSample.Pages.Counter",
-          "Common.TypeNamespace": "BlazorSample.Pages",
-          "Common.TypeNameIdentifier": "Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -1266885315,
         "Kind": "Components.Component",
         "Name": "BlazorSample.Pages.FetchData",
@@ -83,6 +46,43 @@
           "Common.TypeName": "BlazorSample.Pages.FetchData",
           "Common.TypeNamespace": "BlazorSample.Pages",
           "Common.TypeNameIdentifier": "FetchData",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 885809911,
+        "Kind": "Components.Component",
+        "Name": "BlazorSample.Pages.Counter",
+        "AssemblyName": "BlazorSample",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BlazorSample.Pages.Counter",
+          "Common.TypeNamespace": "BlazorSample.Pages",
+          "Common.TypeNameIdentifier": "Counter"
+        }
+      },
+      {
+        "HashCode": 1036842398,
+        "Kind": "Components.Component",
+        "Name": "BlazorSample.Pages.Counter",
+        "AssemblyName": "BlazorSample",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BlazorSample.Pages.Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BlazorSample.Pages.Counter",
+          "Common.TypeNamespace": "BlazorSample.Pages",
+          "Common.TypeNameIdentifier": "Counter",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -161,76 +161,113 @@
         }
       },
       {
-        "HashCode": 1534041989,
+        "HashCode": -1653906375,
         "Kind": "Components.Component",
-        "Name": "BlazorSample.App",
+        "Name": "BlazorSample.Pages.Summary",
         "AssemblyName": "BlazorSample",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "App"
+            "TagName": "Summary"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorSample.App",
-          "Common.TypeNamespace": "BlazorSample",
-          "Common.TypeNameIdentifier": "App"
+          "Common.TypeName": "BlazorSample.Pages.Summary",
+          "Common.TypeNamespace": "BlazorSample.Pages",
+          "Common.TypeNameIdentifier": "Summary"
         }
       },
       {
-        "HashCode": -1805954383,
+        "HashCode": 2050704491,
         "Kind": "Components.Component",
-        "Name": "BlazorSample.App",
+        "Name": "BlazorSample.Pages.Summary",
         "AssemblyName": "BlazorSample",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "BlazorSample.App"
+            "TagName": "BlazorSample.Pages.Summary"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorSample.App",
-          "Common.TypeNamespace": "BlazorSample",
-          "Common.TypeNameIdentifier": "App",
+          "Common.TypeName": "BlazorSample.Pages.Summary",
+          "Common.TypeNamespace": "BlazorSample.Pages",
+          "Common.TypeNameIdentifier": "Summary",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
       {
-        "HashCode": 891357057,
+        "HashCode": 1021975111,
         "Kind": "Components.Component",
-        "Name": "BlazorSample.Shared.LoginDisplay",
+        "Name": "BlazorSample.Pages.ShowRecordings",
         "AssemblyName": "BlazorSample",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "LoginDisplay"
+            "TagName": "ShowRecordings"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorSample.Shared.LoginDisplay",
-          "Common.TypeNamespace": "BlazorSample.Shared",
-          "Common.TypeNameIdentifier": "LoginDisplay"
+          "Common.TypeName": "BlazorSample.Pages.ShowRecordings",
+          "Common.TypeNamespace": "BlazorSample.Pages",
+          "Common.TypeNameIdentifier": "ShowRecordings"
         }
       },
       {
-        "HashCode": 25471283,
+        "HashCode": 237057835,
         "Kind": "Components.Component",
-        "Name": "BlazorSample.Shared.LoginDisplay",
+        "Name": "BlazorSample.Pages.ShowRecordings",
         "AssemblyName": "BlazorSample",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "BlazorSample.Shared.LoginDisplay"
+            "TagName": "BlazorSample.Pages.ShowRecordings"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorSample.Shared.LoginDisplay",
+          "Common.TypeName": "BlazorSample.Pages.ShowRecordings",
+          "Common.TypeNamespace": "BlazorSample.Pages",
+          "Common.TypeNameIdentifier": "ShowRecordings",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 900419622,
+        "Kind": "Components.Component",
+        "Name": "BlazorSample.Shared.NavMenu",
+        "AssemblyName": "BlazorSample",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BlazorSample.Shared.NavMenu",
           "Common.TypeNamespace": "BlazorSample.Shared",
-          "Common.TypeNameIdentifier": "LoginDisplay",
+          "Common.TypeNameIdentifier": "NavMenu"
+        }
+      },
+      {
+        "HashCode": 1777350351,
+        "Kind": "Components.Component",
+        "Name": "BlazorSample.Shared.NavMenu",
+        "AssemblyName": "BlazorSample",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BlazorSample.Shared.NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BlazorSample.Shared.NavMenu",
+          "Common.TypeNamespace": "BlazorSample.Shared",
+          "Common.TypeNameIdentifier": "NavMenu",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -400,39 +437,76 @@
         }
       },
       {
-        "HashCode": 900419622,
+        "HashCode": 891357057,
         "Kind": "Components.Component",
-        "Name": "BlazorSample.Shared.NavMenu",
+        "Name": "BlazorSample.Shared.LoginDisplay",
         "AssemblyName": "BlazorSample",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "NavMenu"
+            "TagName": "LoginDisplay"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorSample.Shared.NavMenu",
+          "Common.TypeName": "BlazorSample.Shared.LoginDisplay",
           "Common.TypeNamespace": "BlazorSample.Shared",
-          "Common.TypeNameIdentifier": "NavMenu"
+          "Common.TypeNameIdentifier": "LoginDisplay"
         }
       },
       {
-        "HashCode": 1777350351,
+        "HashCode": 25471283,
         "Kind": "Components.Component",
-        "Name": "BlazorSample.Shared.NavMenu",
+        "Name": "BlazorSample.Shared.LoginDisplay",
         "AssemblyName": "BlazorSample",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "BlazorSample.Shared.NavMenu"
+            "TagName": "BlazorSample.Shared.LoginDisplay"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorSample.Shared.NavMenu",
+          "Common.TypeName": "BlazorSample.Shared.LoginDisplay",
           "Common.TypeNamespace": "BlazorSample.Shared",
-          "Common.TypeNameIdentifier": "NavMenu",
+          "Common.TypeNameIdentifier": "LoginDisplay",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1534041989,
+        "Kind": "Components.Component",
+        "Name": "BlazorSample.App",
+        "AssemblyName": "BlazorSample",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BlazorSample.App",
+          "Common.TypeNamespace": "BlazorSample",
+          "Common.TypeNameIdentifier": "App"
+        }
+      },
+      {
+        "HashCode": -1805954383,
+        "Kind": "Components.Component",
+        "Name": "BlazorSample.App",
+        "AssemblyName": "BlazorSample",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BlazorSample.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BlazorSample.App",
+          "Common.TypeNamespace": "BlazorSample",
+          "Common.TypeNameIdentifier": "App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -19077,6 +19151,11 @@
       "FilePath": "/Users/snowbai/Documents/GitHub/Summarized/_Imports.razor",
       "TargetPath": "_Imports.razor",
       "FileKind": "componentImport"
+    },
+    {
+      "FilePath": "/Users/snowbai/Documents/GitHub/Summarized/Pages/Summary.razor",
+      "TargetPath": "Pages\\Summary.razor",
+      "FileKind": "component"
     },
     {
       "FilePath": "/Users/snowbai/Documents/GitHub/Summarized/Pages/FetchData.razor",
