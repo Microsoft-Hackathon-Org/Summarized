@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Graph;
 
-namespace MyProject.Helpers
+namespace Helpers
 {
     public static class GraphServiceHelper
     {

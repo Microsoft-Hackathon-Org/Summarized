@@ -2321,6 +2321,7 @@
     "net7.0": [
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.2",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 7.0.2",
+      "Microsoft.Graph >= 4.2.0",
       "Microsoft.Identity.Web >= 1.16.0",
       "Microsoft.Identity.Web.MicrosoftGraph >= 1.16.0",
       "Microsoft.Identity.Web.UI >= 1.16.0"
@@ -2377,6 +2378,10 @@
             "noWarn": [
               "NU1605"
             ]
+          },
+          "Microsoft.Graph": {
+            "target": "Package",
+            "version": "[4.2.0, )"
           },
           "Microsoft.Identity.Web": {
             "target": "Package",

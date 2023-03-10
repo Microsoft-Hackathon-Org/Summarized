@@ -53,6 +53,10 @@
                 "NU1605"
               ]
             },
+            "Microsoft.Graph": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
             "Microsoft.Identity.Web": {
               "target": "Package",
               "version": "[1.16.0, )"

@@ -1,7 +1,7 @@
 @page "/showrecordings"
 
-@using Microsoft.Identity.Web
-@using Microsoft.Graph
+@using Microsoft.Identity.Web;
+@using Microsoft.Graph;
 @inject Microsoft.Graph.GraphServiceClient GraphServiceClient
 @inject MicrosoftIdentityConsentAndConditionalAccessHandler ConsentHandler
 
@@ -25,31 +25,57 @@ else
             <td>Recordings</td>
             <td>@user.DisplayName</td>
         </tr>
+        <tr>
+            <td>Recordings</td>
+            <td>@user.Mail</td>
+        </tr>
     </table>
     <button class="btn btn-default" @onclick="() => handleSendEmail()"> send email</button>
 }
 
-@code{
-    public static void handleSendEmail(){
-
-        @* Console.WriteLine($"Hello thisthisthis");     *@
-    System.Diagnostics.Debug.WriteLine("this is the best lineeee");    
-}
-
-}
 @code {
-    User? user;
+  User? user;
 
-    protected override async Task OnInitializedAsync()
-    {
-        try
-        {
-            user = await GraphServiceClient.Me.Request().GetAsync();
-        }
-        catch (Exception ex)
-        {
-            ConsentHandler.HandleException(ex);
-        }
+  protected override async Task OnInitializedAsync()
+  {
+      try
+      {
+          user = await GraphServiceClient.Me.Request().GetAsync();
+      }
+      catch (Exception ex)
+      {
+          ConsentHandler.HandleException(ex);
+      }
+  }
+    
+  
+  public static GraphServiceClient client;
+  private async void handleSendEmail()
+  {   
+    var user = await GraphServiceClient.Me.Request().GetAsync();
+    @* Recipient currentUserRecipient = "@(new Recipient())"; *@
+    Recipient currentUserRecipient = new Recipient();
+    EmailAddress currentUserEmailAdress = new EmailAddress();
+        currentUserEmailAdress.Address = user.Mail;
+        currentUserEmailAdress.Name = user.DisplayName;
+        currentUserRecipient.EmailAddress = currentUserEmailAdress;
+
+    try{
+        ItemBody messageBody = new ItemBody();
+        messageBody.Content = "this is the test email body";
+        messageBody.ContentType = BodyType.Text;
+
+        Message newMessage = new Message();
+        newMessage.Subject = "\ntest message subject.";
+        newMessage.ToRecipients = new List<Recipient> { currentUserRecipient };
+        newMessage.Body = messageBody;
+        await GraphServiceClient.Me.SendMail(newMessage).Request().PostAsync();
+        Console.WriteLine("\nMail sent to {0}", user.DisplayName);
     }
-     
+    catch(Exception ex)
+    {
+      Console.WriteLine($"Error sending email: {ex.Message}");
+      throw;
+    }
+  }
 }
