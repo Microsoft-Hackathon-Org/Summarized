@@ -17,20 +17,13 @@ else
 {  
 
     <table class="table table-striped table-condensed" style="font-family: monospace">
+
         <tr>
-            <th>Property</th>
-            <th>Value</th>
-        </tr>
-        <tr>
-            <td>Recordings</td>
-            <td>@user.DisplayName</td>
-        </tr>
-        <tr>
-            <td>Recordings</td>
-            <td>@user.Mail</td>
+            <td>Hello @user.DisplayName</td>
+            <td>now let's summarize it </td>
         </tr>
     </table>
-    <button class="btn btn-default" @onclick="() => handleSendEmail()"> send email</button>
+    <button class="btn btn-default" @onclick="() => handleSendEmail()">summarize</button>
 }
 
 @code {
