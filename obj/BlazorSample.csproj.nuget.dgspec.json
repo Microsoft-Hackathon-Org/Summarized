@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "/Users/snowbai/Documents/GitHub/Summarized/BlazorSample.csproj": {}
+    "C:\\Users\\Jaden\\OneDrive - UW\\Documents\\Summarized\\BlazorSample.csproj": {}
   },
   "projects": {
-    "/Users/snowbai/Documents/GitHub/Summarized/BlazorSample.csproj": {
+    "C:\\Users\\Jaden\\OneDrive - UW\\Documents\\Summarized\\BlazorSample.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/snowbai/Documents/GitHub/Summarized/BlazorSample.csproj",
+        "projectUniqueName": "C:\\Users\\Jaden\\OneDrive - UW\\Documents\\Summarized\\BlazorSample.csproj",
         "projectName": "BlazorSample",
-        "projectPath": "/Users/snowbai/Documents/GitHub/Summarized/BlazorSample.csproj",
-        "packagesPath": "/Users/snowbai/.nuget/packages/",
-        "outputPath": "/Users/snowbai/Documents/GitHub/Summarized/obj/",
+        "projectPath": "C:\\Users\\Jaden\\OneDrive - UW\\Documents\\Summarized\\BlazorSample.csproj",
+        "packagesPath": "C:\\Users\\Jaden\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jaden\\OneDrive - UW\\Documents\\Summarized\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/snowbai/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Jaden\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -93,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

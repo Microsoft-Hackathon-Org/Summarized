@@ -23,7 +23,7 @@ else
             <td>now let's summarize it </td>
         </tr>
     </table>
-    <button class="btn btn-default" @onclick="() => handleSendEmail()">summarize</button>
+    <button class="btn btn-default" onclick="() => @handleSendEmail()">Summarize</button>
 }
 
 @code {
@@ -45,16 +45,18 @@ else
   public static GraphServiceClient client;
   private async void handleSendEmail()
   {   
+    Console.WriteLine("Trying to send email...");
     var user = await GraphServiceClient.Me.Request().GetAsync();
-    @* Recipient currentUserRecipient = "@(new Recipient())"; *@
+    @* Recipient currentUserRecipient = "@(new Recipient())"; 
     Recipient currentUserRecipient = new Recipient();
     EmailAddress currentUserEmailAdress = new EmailAddress();
         currentUserEmailAdress.Address = user.Mail;
         currentUserEmailAdress.Name = user.DisplayName;
         currentUserRecipient.EmailAddress = currentUserEmailAdress;
+        Console.WriteLine("This is my email: ", currentUserRecipient.EmailAddress); *@
 
     try{
-        ItemBody messageBody = new ItemBody();
+        @* ItemBody messageBody = new ItemBody();
         messageBody.Content = "this is the test email body";
         messageBody.ContentType = BodyType.Text;
 
@@ -63,7 +65,7 @@ else
         newMessage.ToRecipients = new List<Recipient> { currentUserRecipient };
         newMessage.Body = messageBody;
         await GraphServiceClient.Me.SendMail(newMessage).Request().PostAsync();
-        Console.WriteLine("\nMail sent to {0}", user.DisplayName);
+        Console.WriteLine("\nMail sent to {0}", user.DisplayName); *@
     }
     catch(Exception ex)
     {
