@@ -2372,25 +2372,24 @@
     ]
   },
   "packageFolders": {
-    "/Users/snowbai/.nuget/packages/": {}
+    "/home/kaiwen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/snowbai/Documents/GitHub/Summarized/BlazorSample.csproj",
+      "projectUniqueName": "/home/kaiwen/github/.NET/Summarized/BlazorSample.csproj",
       "projectName": "BlazorSample",
-      "projectPath": "/Users/snowbai/Documents/GitHub/Summarized/BlazorSample.csproj",
-      "packagesPath": "/Users/snowbai/.nuget/packages/",
-      "outputPath": "/Users/snowbai/Documents/GitHub/Summarized/obj/",
+      "projectPath": "/home/kaiwen/github/.NET/Summarized/BlazorSample.csproj",
+      "packagesPath": "/home/kaiwen/.nuget/packages/",
+      "outputPath": "/home/kaiwen/github/.NET/Summarized/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/snowbai/.nuget/NuGet/NuGet.Config"
+        "/home/kaiwen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2463,7 +2462,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.201/RuntimeIdentifierGraph.json"
       }
     }
   }
