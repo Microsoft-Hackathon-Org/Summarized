@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net7.0": {
-      "Azure.Core/1.17.0": {
+      "Azure.Core/1.18.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.0.0",
@@ -144,10 +144,10 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "Microsoft.Graph/4.2.0": {
+      "Microsoft.Graph/4.4.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Graph.Core": "2.0.2"
+          "Microsoft.Graph.Core": "2.0.5"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Graph.dll": {
@@ -160,12 +160,12 @@
           }
         }
       },
-      "Microsoft.Graph.Core/2.0.2": {
+      "Microsoft.Graph.Core/2.0.5": {
         "type": "package",
         "dependencies": {
-          "Azure.Core": "1.17.0",
+          "Azure.Core": "1.18.0",
           "Microsoft.Identity.Client": "4.35.1",
-          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.12.0",
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.12.2",
           "System.Diagnostics.DiagnosticSource": "4.7.1",
           "System.Security.Claims": "4.3.0",
           "System.Text.Json": "5.0.2"
@@ -701,16 +701,16 @@
     }
   },
   "libraries": {
-    "Azure.Core/1.17.0": {
-      "sha512": "ByJGsP7zqeMG+QFLEpd0ILzWVlRtB1ZWwgkqNWEN2KV0axRyWZDm6uPsKtsfBkNeiPtr4fUW0NSZez69TBSGrA==",
+    "Azure.Core/1.18.0": {
+      "sha512": "h0DQLyIKvowm6n9XV2njDiiI5Et0QecpE2VcGfhps9J4m9MJ6tBD4Qxl+fbL8k/41sD7UXP4nAWgxC81oV11oQ==",
       "type": "package",
-      "path": "azure.core/1.17.0",
+      "path": "azure.core/1.18.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "CHANGELOG.md",
         "README.md",
-        "azure.core.1.17.0.nupkg.sha512",
+        "azure.core.1.18.0.nupkg.sha512",
         "azure.core.nuspec",
         "lib/net461/Azure.Core.dll",
         "lib/net461/Azure.Core.xml",
@@ -893,10 +893,10 @@
         "version.txt"
       ]
     },
-    "Microsoft.Graph/4.2.0": {
-      "sha512": "/7b5P9+wgJ39zpM4J0usNziyiWVM6+tVXzE3RWwx5wVvAGufG6zdVWfdBjyQSj+cPWrsxUePKNoUNVUYWoz6Cg==",
+    "Microsoft.Graph/4.4.0": {
+      "sha512": "jh+WbOjDulo77a/3hBgXXwOfPhMgIGl3jx38XbnS7iZ0nWzNJgatLYBHxwCKeoO64OyU3tWlmrZuhYw5cnaLHg==",
       "type": "package",
-      "path": "microsoft.graph/4.2.0",
+      "path": "microsoft.graph/4.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -905,14 +905,14 @@
         "lib/net462/Microsoft.Graph.xml",
         "lib/netstandard2.0/Microsoft.Graph.dll",
         "lib/netstandard2.0/Microsoft.Graph.xml",
-        "microsoft.graph.4.2.0.nupkg.sha512",
+        "microsoft.graph.4.4.0.nupkg.sha512",
         "microsoft.graph.nuspec"
       ]
     },
-    "Microsoft.Graph.Core/2.0.2": {
-      "sha512": "PYWtWPRNbUMKYbXfr2UFsd8ldrbve42JLJPOWPvKG6iEdy7KdS0g0o+oRaTp/1Uieb9SjQVn3EN37wmzlGOUbA==",
+    "Microsoft.Graph.Core/2.0.5": {
+      "sha512": "PRaGr69SZU4eAex/7UaGWA2Qh2MoN+WSl0Dp+M44UFWtio6yDI7EvAgtKiVNZZG1RBYweEwaP6GflEbedLkIVA==",
       "type": "package",
-      "path": "microsoft.graph.core/2.0.2",
+      "path": "microsoft.graph.core/2.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -927,7 +927,7 @@
         "lib/xamarinios10/Microsoft.Graph.Core.xml",
         "lib/xamarinmac20/Microsoft.Graph.Core.dll",
         "lib/xamarinmac20/Microsoft.Graph.Core.xml",
-        "microsoft.graph.core.2.0.2.nupkg.sha512",
+        "microsoft.graph.core.2.0.5.nupkg.sha512",
         "microsoft.graph.core.nuspec"
       ]
     },
@@ -2364,7 +2364,7 @@
     "net7.0": [
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.2",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 7.0.2",
-      "Microsoft.Graph >= 4.2.0",
+      "Microsoft.Graph >= 4.4.0",
       "Microsoft.Identity.Web >= 1.16.0",
       "Microsoft.Identity.Web.MicrosoftGraph >= 1.16.0",
       "Microsoft.Identity.Web.UI >= 1.16.0",
@@ -2424,7 +2424,7 @@
           },
           "Microsoft.Graph": {
             "target": "Package",
-            "version": "[4.2.0, )"
+            "version": "[4.4.0, )"
           },
           "Microsoft.Identity.Web": {
             "target": "Package",
