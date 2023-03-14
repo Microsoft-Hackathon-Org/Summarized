@@ -20,10 +20,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kaiwen/github/.NET/Summarized/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/home/kaiwen/github/.NET/Summarized/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,28 +28,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kaiwen/github/.NET/Summarized/Pages/ShowProfile.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hvd1Byb2ZpbGUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/kaiwen/github/.NET/Summarized/Pages/ShowRecordings.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hvd1JlY29yZGluZ3MucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/home/kaiwen/github/.NET/Summarized/Pages/SumText.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3VtVGV4dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kaiwen/github/.NET/Summarized/Pages/Test.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGVzdC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/home/kaiwen/github/.NET/Summarized/Shared/LoginDisplay.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luRGlzcGxheS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/kaiwen/github/.NET/Summarized/Shared/SurveyPrompt.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/kaiwen/github/.NET/Summarized/_Imports.razor]
