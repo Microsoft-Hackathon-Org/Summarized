@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3VtVGV4dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kaiwen/github/.NET/Summarized/Pages/Teams.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGVhbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kaiwen/github/.NET/Summarized/Shared/LoginDisplay.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luRGlzcGxheS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

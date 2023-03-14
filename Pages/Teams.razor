@@ -1,0 +1,40 @@
+@page "/team/{teamId}"
+@using Microsoft.Identity.Web;
+@using Microsoft.Graph;
+@inject Microsoft.Graph.GraphServiceClient GraphServiceClient
+@inject MicrosoftIdentityConsentAndConditionalAccessHandler ConsentHandler
+@using Microsoft.AspNetCore.Components.Routing
+
+
+@code {
+    private IEnumerable<DriveItem> teamRecordings;
+
+    protected override async Task OnInitializedAsync()
+    {
+        @* var teamId = RouteData.RouteValues["teamId"].ToString(); *@
+        @* var teamChannels = await GraphServiceClient.Teams[teamId].Channels.Request().GetAsync(); *@
+
+        @* foreach (var channel in teamChannels)
+        {
+            var filesFolderUrl = channel.FilesFolder.WebUrl;
+            if (filesFolderUrl != null)
+            {
+                var filesFolderId = filesFolderUrl.Substring(filesFolderUrl.IndexOf("/files/")+7);
+                var filesFolder = await GraphServiceClient.Drives["b!RwVYXmICjEqOIHAVukUvIfplkwaQyOdHt5sf8M6bYXNIMjlgyqs7QZJGTMIsStGU"].Items[filesFolderId].Request().GetAsync();
+                var filesFolderChildren = await GraphServiceClient.Drives["b!RwVYXmICjEqOIHAVukUvIfplkwaQyOdHt5sf8M6bYXNIMjlgyqs7QZJGTMIsStGU"].Items[filesFolderId].Children.Request().GetAsync();
+
+                teamRecordings = filesFolderChildren.Where(f => f.Folder != null);
+                break; *@
+            }
+        }
+    }
+}
+
+<h1>Team Folders</h1>
+
+<ul>
+    @* @foreach (var folder in teamRecordings)
+    {
+        <li>@folder.Name</li>
+    } *@
+</ul>

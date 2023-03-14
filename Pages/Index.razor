@@ -3,8 +3,9 @@
 @using Microsoft.Graph;
 @inject Microsoft.Graph.GraphServiceClient GraphServiceClient
 @inject MicrosoftIdentityConsentAndConditionalAccessHandler ConsentHandler
+@inject NavigationManager NavigationManager
 
-<PageTitle>Meeting Recordings</PageTitle>
+
 
 <h1>Meeting Recording</h1>
 
@@ -34,6 +35,7 @@ else
         </tbody>
     </table>
 }
+
 
 @code {
     User? user;
@@ -68,8 +70,8 @@ else
         return result;
     }
 
-    private async Task ShowTeamFolder(string teamId)
+    private void ShowTeamFolder(string teamId)
     {
-
+        NavigationManager.NavigateTo($"/team/{teamId}");
     }
 }
