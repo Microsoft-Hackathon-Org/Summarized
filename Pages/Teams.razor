@@ -1,40 +1,78 @@
-@page "/team/{teamId}"
+@page "/teams/{teamId}"
 @using Microsoft.Identity.Web;
 @using Microsoft.Graph;
 @inject Microsoft.Graph.GraphServiceClient GraphServiceClient
 @inject MicrosoftIdentityConsentAndConditionalAccessHandler ConsentHandler
 @using Microsoft.AspNetCore.Components.Routing
+@inject NavigationManager NavigationManager
+
+
+<h1>Team Recordings</h1>
+
+@if (teamRecordings == null)
+{
+    <p>Loading... / No recordings found for this team.</p>
+}
+else
+{
+    <table class="table table-striped table-condensed" style="font-family: monospace">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Last Modified</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in teamRecordings)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.LastModifiedDateTime</td>
+                    <td><a href="@item.WebUrl" target="_blank">Open</a></td>
+                    <td><button>Summarize</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
 
 @code {
     private IEnumerable<DriveItem> teamRecordings;
-
+    [Parameter]
+    public string teamId { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        @* var teamId = RouteData.RouteValues["teamId"].ToString(); *@
-        @* var teamChannels = await GraphServiceClient.Teams[teamId].Channels.Request().GetAsync(); *@
+        var segments = NavigationManager.Uri.Split('/', StringSplitOptions.RemoveEmptyEntries);
+        teamId = segments[segments.Length - 1];
 
-        @* foreach (var channel in teamChannels)
+        try
         {
-            var filesFolderUrl = channel.FilesFolder.WebUrl;
-            if (filesFolderUrl != null)
-            {
-                var filesFolderId = filesFolderUrl.Substring(filesFolderUrl.IndexOf("/files/")+7);
-                var filesFolder = await GraphServiceClient.Drives["b!RwVYXmICjEqOIHAVukUvIfplkwaQyOdHt5sf8M6bYXNIMjlgyqs7QZJGTMIsStGU"].Items[filesFolderId].Request().GetAsync();
-                var filesFolderChildren = await GraphServiceClient.Drives["b!RwVYXmICjEqOIHAVukUvIfplkwaQyOdHt5sf8M6bYXNIMjlgyqs7QZJGTMIsStGU"].Items[filesFolderId].Children.Request().GetAsync();
+            // Call the first API to get the team object and extract the internal ID
+            var team = await GraphServiceClient.Teams[teamId].Request().GetAsync();
+            var channels = await GraphServiceClient.Teams[teamId].Channels.Request().GetAsync();
+            var internalId = channels.First().Id;
 
-                teamRecordings = filesFolderChildren.Where(f => f.Folder != null);
-                break; *@
+            // Call the second API to get the files folder and extract the drive ID and folder ID
+            var filesFolder = await GraphServiceClient.Teams[teamId].Channels[internalId].FilesFolder.Request().GetAsync();
+            var driveId = filesFolder.ParentReference.DriveId;
+            var folderId = filesFolder.Id;
+
+            // Call the third API to get the child items and extract the recordings folder ID
+            var children = await GraphServiceClient.Drives[driveId].Items[folderId].Children.Request().GetAsync();
+            var recordingsFolderId = children.FirstOrDefault(child => child.Name == "Recordings")?.Id;
+
+            // Call the fourth API to get the recordings
+            if (!string.IsNullOrEmpty(recordingsFolderId))
+            {
+                var recordings = await GraphServiceClient.Drives[driveId].Items[recordingsFolderId].Children.Request().GetAsync();
+                teamRecordings = recordings.Where(r => r.File != null);
             }
+        }
+        catch (Exception ex)
+        {
+            ConsentHandler.HandleException(ex);
         }
     }
 }
-
-<h1>Team Folders</h1>
-
-<ul>
-    @* @foreach (var folder in teamRecordings)
-    {
-        <li>@folder.Name</li>
-    } *@
-</ul>

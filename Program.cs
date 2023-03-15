@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Graph = Microsoft.Graph;
-using BlazorSample.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +30,6 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor()
     .AddMicrosoftIdentityConsentHandler();
-builder.Services.AddSingleton<WeatherForecastService>();
 
 var app = builder.Build();
 
