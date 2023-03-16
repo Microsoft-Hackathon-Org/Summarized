@@ -1,8 +1,10 @@
 # Summarized
 
 <p align="center">
-  <img src="./assets/banner.png" alt="Hack Together banner"/>
+  <img src="../assets/banner.png" alt="Hack Together banner"/>
 </p>
+
+[![Hack Together: Microsoft Graph and .NET](https://img.shields.io/badge/Microsoft%20-Hack--Together-orange?style=for-the-badge&logo=microsoft)](https://github.com/microsoft/hack-together)
 
 ## Background
 
