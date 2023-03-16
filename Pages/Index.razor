@@ -5,8 +5,6 @@
 @inject MicrosoftIdentityConsentAndConditionalAccessHandler ConsentHandler
 @inject NavigationManager NavigationManager
 
-
-
 <h1>Meeting Recording</h1>
 
 @if (user == null)
@@ -36,11 +34,9 @@ else
     </table>
 }
 
-
 @code {
     User? user;
     List<Team> teams = new List<Team>();
-
     protected override async Task OnInitializedAsync()
     {
         try
