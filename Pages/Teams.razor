@@ -1,0 +1,212 @@
+@page "/teams/{teamId}"
+@using Microsoft.Identity.Web;
+@using Microsoft.Graph;
+@inject Microsoft.Graph.GraphServiceClient GraphServiceClient
+@inject MicrosoftIdentityConsentAndConditionalAccessHandler ConsentHandler
+@using Microsoft.AspNetCore.Components.Routing
+@inject NavigationManager NavigationManager
+@using System.Net.Http
+@using System.Net.Http.Headers
+@using System.Text.Json
+@inject HttpClient Http
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using System.Threading.Tasks
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+@using System.Text
+
+
+
+<h1>Team Recordings</h1>
+
+@if (teamRecordings == null)
+{
+  <p>Loading... / No recordings found for this team.</p>
+}
+else
+{
+  <table class="table table-striped table-condensed" style="font-family: monospace">
+      <thead>
+          <tr>
+            <th>Name</th>
+            <th>Last Modified</th>
+            <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          @foreach (var item in teamRecordings)
+          {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.LastModifiedDateTime</td>
+                <td><button class="btn btn-primary" @onclick="async () => await SummarizeRecording(item.Id)">Summarize</button></td>
+                <td><a href="@item.WebUrl" target="_blank">Open</a></td>
+            </tr>
+          }
+      </tbody>
+  </table>
+}
+
+
+@code {
+  private IEnumerable<DriveItem> teamRecordings;
+  [Parameter]
+  public string teamId { get; set; }
+  private bool hasRendered;
+  private string driveId;
+
+  protected override async Task OnInitializedAsync()
+  {
+    var segments = NavigationManager.Uri.Split('/', StringSplitOptions.RemoveEmptyEntries);
+    teamId = segments[segments.Length - 1];
+
+    try
+    {
+      // Call the first API to get the team object and extract the internal ID
+      var team = await GraphServiceClient.Teams[teamId].Request().GetAsync();
+      var channels = await GraphServiceClient.Teams[teamId].Channels.Request().GetAsync();
+      var internalId = channels.First().Id;
+
+      // Call the second API to get the files folder and extract the drive ID and folder ID
+      var filesFolder = await GraphServiceClient.Teams[teamId].Channels[internalId].FilesFolder.Request().GetAsync();
+      driveId = filesFolder.ParentReference.DriveId; 
+      var folderId = filesFolder.Id;
+
+      // Call the third API to get the child items and extract the recordings folder ID
+      var children = await GraphServiceClient.Drives[driveId].Items[folderId].Children.Request().GetAsync();
+      var recordingsFolderId = children.FirstOrDefault(child => child.Name == "Recordings")?.Id;
+
+      // Call the fourth API to get the recordings
+      if (!string.IsNullOrEmpty(recordingsFolderId))
+      {
+        var recordings = await GraphServiceClient.Drives[driveId].Items[recordingsFolderId].Children.Request().GetAsync();
+        teamRecordings = recordings.Where(r => r.File != null);
+      }
+    }
+    catch (Exception ex)
+    {
+      ConsentHandler.HandleException(ex);
+    }
+  }
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    if (firstRender)
+    {
+        hasRendered = true;
+    }
+  }
+  private async Task SummarizeRecording(string fileId)
+  {
+    if (!hasRendered)
+    {
+        Console.WriteLine("JSRuntime not initialized yet");
+        return;
+    }
+    // Log the fileId
+    Console.WriteLine($"Fetching file with ID: {fileId}");
+
+    // Display the message
+    await JSRuntime.InvokeVoidAsync("alert", "A summary of the meeting will be sent to your email.");
+
+    // Get the meeting recording file
+    var file = await GraphServiceClient.Drives[driveId].Items[fileId].Request().GetAsync();
+    // Log the file object
+    Console.WriteLine($"File object: {JsonSerializer.Serialize(file)}");
+    var fileContentUrl = file.AdditionalData["@microsoft.graph.downloadUrl"].ToString();
+
+    // Call the Speech to Text API
+    var speechToTextEndpoint = "https://eastus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1";
+    var accessToken = await GetSpeechApiAccessToken();
+
+    var request = new HttpRequestMessage(HttpMethod.Post, speechToTextEndpoint + "?language=en-US&format=simple");
+    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+    request.Headers.Add("Transfer-Encoding", "chunked");
+    request.Headers.Add("Expect", "100-continue");
+
+    // Read the file content as a byte array
+    var fileContent = await Http.GetByteArrayAsync(fileContentUrl);
+    request.Content = new ByteArrayContent(fileContent);
+    request.Content.Headers.ContentType = new MediaTypeHeaderValue("audio/mp4");
+
+    var speechToTextResponse = await Http.SendAsync(request);
+    var speechToTextResult = await speechToTextResponse.Content.ReadAsStringAsync();
+    var speechToTextJson = JsonDocument.Parse(speechToTextResult);
+    var transcribedText = speechToTextJson.RootElement.GetProperty("DisplayText").GetString();
+
+    // Call the NLP API to summarize the text
+    var summarizationEndpoint = "https://cognitivesummarized.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/summarize";
+    var cognitiveServicesKey = "624371d453594787b2c6b035a75e32c2";
+
+    var summarizationRequest = new HttpRequestMessage(HttpMethod.Post, summarizationEndpoint);
+    summarizationRequest.Headers.Add("Ocp-Apim-Subscription-Key", cognitiveServicesKey);
+    summarizationRequest.Content = new StringContent(JsonSerializer.Serialize(new
+    {
+        Documents = new[]
+        {
+            new { Id = "1", Text = transcribedText }
+        }
+    }), Encoding.UTF8, "application/json");
+
+    var summarizationResponse = await Http.SendAsync(summarizationRequest);
+    if (summarizationResponse.IsSuccessStatusCode)
+    {
+      var summarizationResult = await summarizationResponse.Content.ReadAsStringAsync();
+      var summarizationJson = JsonDocument.Parse(summarizationResult);
+      var summarizedText = summarizationJson.RootElement.GetProperty("documents")[0].GetProperty("summarySentences").GetString();
+
+      // Log the summarized text to the browser console
+      Console.WriteLine($"Summarized Text: {summarizedText}");
+
+      // Send the summarized text to the user's email
+      await SendSummaryByEmail(summarizedText);
+    }
+    else
+    {
+        var errorText = await summarizationResponse.Content.ReadAsStringAsync();
+        Console.WriteLine($"Error summarizing the text: {errorText}");
+    }
+  }
+
+  private async Task<string> GetSpeechApiAccessToken()
+  {
+    var apiKey = "4b7814d5ac874129bd99b38dd3d3608d";
+    var tokenEndpoint = "https://eastus.api.cognitive.microsoft.com/sts/v1.0/issuetoken";
+
+    using var tokenClient = new HttpClient();
+    tokenClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", apiKey);
+    var tokenResponse = await tokenClient.PostAsync(tokenEndpoint, null);
+    var token = await tokenResponse.Content.ReadAsStringAsync();
+
+    return token;
+  }
+
+  private async Task SendSummaryByEmail(string summarizedText)
+  {
+    // Get user's email address
+    var userEmail = await GraphServiceClient.Me.Request().Select("mail").GetAsync();
+    
+    // Send email using Graph API
+    var message = new Message
+    {
+        Subject = "Meeting Summary",
+        Body = new ItemBody
+        {
+            ContentType = BodyType.Text,
+            Content = summarizedText
+        },
+        ToRecipients = new List<Recipient>
+        {
+            new Recipient
+            {
+                EmailAddress = new EmailAddress
+                {
+                    Address = userEmail.Mail
+                }
+            }
+        }
+    };
+    await GraphServiceClient.Me.SendMail(message, true).Request().PostAsync();
+  }
+}

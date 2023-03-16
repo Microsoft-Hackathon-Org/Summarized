@@ -1,0 +1,9 @@
+/home/kaiwen/github/.NET/Summarized/obj/Debug/net7.0/Summarized.csproj.AssemblyReference.cache
+/home/kaiwen/github/.NET/Summarized/obj/Debug/net7.0/Summarized.GeneratedMSBuildEditorConfig.editorconfig
+/home/kaiwen/github/.NET/Summarized/obj/Debug/net7.0/Summarized.AssemblyInfoInputs.cache
+/home/kaiwen/github/.NET/Summarized/obj/Debug/net7.0/Summarized.AssemblyInfo.cs
+/home/kaiwen/github/.NET/Summarized/obj/Debug/net7.0/Summarized.csproj.CoreCompileInputs.cache
+/home/kaiwen/github/.NET/Summarized/obj/Debug/net7.0/Summarized.MvcApplicationPartsAssemblyInfo.cs
+/home/kaiwen/github/.NET/Summarized/obj/Debug/net7.0/Summarized.MvcApplicationPartsAssemblyInfo.cache
+/home/kaiwen/github/.NET/Summarized/obj/Debug/net7.0/Summarized.RazorAssemblyInfo.cache
+/home/kaiwen/github/.NET/Summarized/obj/Debug/net7.0/Summarized.RazorAssemblyInfo.cs

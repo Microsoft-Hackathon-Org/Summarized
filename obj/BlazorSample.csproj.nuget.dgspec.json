@@ -52,6 +52,10 @@
                 "NU1605"
               ]
             },
+            "Microsoft.Graph": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
             "Microsoft.Identity.Web": {
               "target": "Package",
               "version": "[1.16.0, )"
@@ -63,6 +67,10 @@
             "Microsoft.Identity.Web.UI": {
               "target": "Package",
               "version": "[1.16.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
